@@ -7,6 +7,13 @@ dotenv.config()
 
 const app = express()
 
+//middlewares
+app.use(express.json()) // allows us to parse incoming requests:req.body
+app.use((req,res,next)=>{
+  console.log(req.method, req.path)
+  next()  
+})
+
 // Routes
 app.use("/api/auth", authRoute)
 
